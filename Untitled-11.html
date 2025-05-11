@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Letter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <audio id="bg-music" src="다라리 (DARARI).mp3" loop></audio>
+    <div class="container">
+        <div class="letter" onclick="OpenLetter()"> 
+            <div class="envelope">📩 Click to Open</div>
+            <div class="content">
+                <h2>💌 A Letter for You :333</h2>
+                <p id="letter-text"></p>
+                <div class="signature">With love, <br><strong>[Your Name]</strong></div>
+            </div>
+        </div>
+        <div class="flowers">
+            <span>🌸</span><span>🌼</span><span>🌺</span><span>🌷</span><span>🌹</span><span>🌻</span><span>🌾</span>
+        </div>
+    </div>
+    <div class="petals-container"></div>
+
+    <script>
+        function openLetter() {
+            document.querySelector('.letter').classList.toggle('open');
+            document.querySelector('.flowers').classList.toggle('show');
+            document.getElementById('bg-music').play();
+            document.getElementById('letter-text').innerHTML = `
+                <p>Dear<strong> [Eric]</strong>,</p>
+                <p style="text-indent: 30px;"> I have something that i hide in my mind. It is really hard to say, but i like you. I don know if i make you scared or hate me or not, but i can not hide it anymore.
+                     You know, I have been closed myself up by some hurt in the past but you're the only one can pull me out of my darknest.I appreciate it a lot :33. I really like you  just your sweetness, I like you just the way you're.</p>
+                
+                <p style="text-indent: 30px;"> So, can i ask you a question? I don't want to keep this to myself anymore… I have feelings for you, and I think you are an incredible person. If you feel the same way, Id love to see where this could lead."
+                       🌸🌼.</p>
+
+                <p>With all my heart,</p>
+                <p><strong>[Mai]</strong></p>
+            `;
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+    const petalsContainer = document.querySelector(".petals-container");
+    const petalTypes = ["🌸", "🌺", "🌷", "🌹"];
+
+    function createPetal() {
+        const petal = document.createElement("span");
+        petal.innerHTML = petalTypes[Math.floor(Math.random() * petalTypes.length)];
+        petal.classList.add("falling-petal");
+        petal.style.left = Math.random() * 100 + "vw";
+        petal.style.animationDuration = Math.random() * 3 + 3 + "s"; // Random fall speed
+        petalsContainer.appendChild(petal);
+
+        setTimeout(() => {
+            petal.remove();
+        }, 6000); // Removes petal after animation ends
+    }
+
+    setInterval(createPetal, 500); // Generates petals every 0.5 seconds
+});
+
+    </script>
+</body>
+</html>

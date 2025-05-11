@@ -1,0 +1,103 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f9f3dd;
+    font-family: "Georgia", serif;
+    text-align: center;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+}
+
+.letter {
+    width: 350px;
+    height: 200px;
+    background-color: #ffdd99;
+    border: 2px solid #aa7733;
+    line-height: 200px;
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+    text-align: center;
+    padding: 10px;
+}
+
+.letter.open {
+    transform: scale(1.1);
+    background-color: #fff;
+    height: auto;
+    padding: 20px;
+    line-height: normal;
+    box-shadow: 0 0 15px rgba(255, 192, 203, 0.8);
+}
+
+.content {
+    display: none;
+    font-size: 18px;
+    text-align: left;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.letter.open .content {
+    display: block;
+    opacity: 1;
+}
+
+.signature {
+    text-align: right;
+    font-style: italic;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.flowers {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    font-size: 30px;
+    position: absolute;
+    top: 250px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.flowers.show span {
+    position: absolute;
+    animation: float 5s infinite ease-in-out;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); opacity: 1; }
+    50% { transform: translateY(-50px); opacity: 0.8; }
+    100% { transform: translateY(0px); opacity: 1; }
+}
+.petals-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+    50% { transform: translateY(50vh) rotate(30deg); opacity: 0.8; }
+    100% { transform: translateY(100vh) rotate(-30deg); opacity: 0; }
+}
+
+.petals-container span {
+    position: absolute;
+    display: inline-block;
+    font-size: 24px;
+    opacity: 1;
+    animation: fall 6s linear infinite;
+}
+
+
